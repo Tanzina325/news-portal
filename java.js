@@ -20,19 +20,30 @@ const categoryIdList =(categoryId)=>{
     fetch(url)
     .then(res=>res.json())
     .then(data=>displayCategoryIdList(data.data))
+    
 }
 const displayCategoryIdList =categoryNews =>{
 console.log(categoryNews);
+const lengthContainer = document.getElementById('length-container')
+lengthContainer.textContent='';
+const lengthDiv =document.createElement('div');
+lengthDiv.innerHTML = `<p class ="text-center p-5">In this category ${categoryNews.length} items are found</p>`;
+lengthContainer.appendChild(lengthDiv);
+
 const newsContainer = document.getElementById('news-container');
 newsContainer.textContent = '';
-categoryNews.forEach(category=>{
+categoryNews.sort((a,b)=>{return b.total_view -a.total_view})
+categoryNews.map(category=>{
+console.log(category)
+
+
     const newsContainerDiv = document.createElement('div');
     newsContainerDiv.innerHTML = `
-    <div class="card card-side bg-base-100 m-16 shadow-xl">
+    <div class="card lg:card-side bg-base-100 m-16 shadow-xl">
   <figure><img src="${category.thumbnail_url}" alt="Movie"></figure>
-  <div class="card-body w-3/5">
+  <div class="card-body lg:w-3/5">
     <h2 class="card-title">${category.title}</h2>
-    <p>${category.details.slice(0,250)}</p>
+    <p>${category.details.slice(0,250)+' ...'}</p>
     <div class ="inline">
     <img  class="w-16 rounded-full " src="${category.author.img}" alt=>
     <span class="pt-40">${category.author.name ?category.author.name :'name of author not found'}</span>
@@ -46,5 +57,6 @@ categoryNews.forEach(category=>{
 newsContainer.appendChild(newsContainerDiv);
 })
 }
+
 // categoryIdList(07);
     loadMedias();
