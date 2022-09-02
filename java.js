@@ -33,9 +33,13 @@ categoryNews.forEach(category=>{
   <div class="card-body w-3/5">
     <h2 class="card-title">${category.title}</h2>
     <p>${category.details.slice(0,250)}</p>
-    
+    <div class ="inline">
+    <img  class="w-16 rounded-full " src="${category.author.img}" alt=>
+    <span class="pt-40">${category.author.name ?category.author.name :'name of author not found'}</span>
+    </div>
+    <div class="inline  my-5"><i class="fa-regular fa-eye"></i><span class="ml-4">${category.total_view ?category.total_view :'viewer not found'}</span></div>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary">Watch</button>
+      <button class="btn btn-primary">Details</button>
     </div>
   </div>
 </div>`
