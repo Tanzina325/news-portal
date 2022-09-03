@@ -9,7 +9,7 @@ const displayMedias = medias=>{
      medias.forEach(media =>{
         // console.log(media.category_name)
         const categoryList = document.createElement('li');
-        categoryList.innerHTML= `<button onclick=categoryIdList('${media.category_id}') class="p-8">${media.category_name}</button>`;
+        categoryList.innerHTML= `<button onclick="categoryIdList('${media.category_id}')" class="p-8">${media.category_name}</button>`;
     categoryContainer.appendChild(categoryList)
      }
         )
@@ -23,7 +23,7 @@ const categoryIdList =(categoryId)=>{
     
 }
 const displayCategoryIdList =categoryNews =>{
-console.log(categoryNews);
+  // console.log(categoryNews);
 const lengthContainer = document.getElementById('length-container')
 lengthContainer.textContent='';
 const lengthDiv =document.createElement('div');
@@ -50,13 +50,31 @@ console.log(category)
     </div>
     <div class="inline  my-5"><i class="fa-regular fa-eye"></i><span class="ml-4">${category.total_view ?category.total_view :'viewer not found'}</span></div>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary">Details</button>
+    <label for="my-modal-6" onclick="newsDetails('${category._id}')" class="btn modal-button">Details</label>
     </div>
   </div>
 </div>`
 newsContainer.appendChild(newsContainerDiv);
 })
 }
+const newsDetails =(detailsId)=>{
+  url= ` https://openapi.programming-hero.com/api/news/${detailsId}`
+  // console.log(url)
+  fetch(url)
+  .then(res=>res.json())
+  .then(data=>displayNewsDetails(data.data[0]))
+  
+}
+const displayNewsDetails =(categoryId) =>{
+console.log(categoryId)
+const detailModalTitle = document.getElementById('modal-body');
+detailModalTitle.innerHTML=`
+<h3 class="font-bold text-lg">Title: ${categoryId.title}</h3>
+<img  class="w-96  " src="${categoryId.image_url}" alt=>
+<img  class="w-12 mt-5 rounded-full " src="${categoryId.author.img}" alt=>
+<span class="pt-40">${categoryId.author.name ?categoryId.author.name :'name of author not found'}</span>
+<div class="inline  m-5"><i class="fa-regular fa-eye"></i><span class="ml-4">${categoryId.total_view ?categoryId.total_view :'viewer not found'}</span></div>`
 
+}
 // categoryIdList(07);
-    loadMedias();
+loadMedias();
