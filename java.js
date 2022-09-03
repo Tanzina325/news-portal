@@ -12,7 +12,9 @@ const displayMedias = medias=>{
         // console.log(media.category_name)
         
         const categoryList = document.createElement('li');
-        categoryList.innerHTML= `<button onclick="categoryIdList('${media.category_id}')" class="p-8">${media.category_name}</button>`;
+      
+        categoryList.innerHTML= `<button onclick="categoryIdList('${media.category_id}')"
+        class=" lg:m-6 hover:bg-sky-700" >${media.category_name}</button>`;
         
      categoryContainer.appendChild(categoryList); }
        )
@@ -41,7 +43,7 @@ const displayCategoryIdList =categoryNews =>{
 const lengthContainer = document.getElementById('length-container')
 lengthContainer.textContent='';
 const lengthDiv =document.createElement('div');
-lengthDiv.innerHTML = `<p class ="text-center p-5">In this category ${categoryNews.length} items are found</p>`;
+lengthDiv.innerHTML = `<p class ="text-center p-1">In this category ${categoryNews.length} items are found</p>`;
 lengthContainer.appendChild(lengthDiv);
 
 const newsContainer = document.getElementById('news-container');
@@ -84,8 +86,8 @@ const displayNewsDetails =(categoryId) =>{
 console.log(categoryId)
 const detailModalTitle = document.getElementById('modal-body');
 detailModalTitle.innerHTML=`
-<h3 class="font-bold text-lg">Title: ${categoryId.title}</h3>
-<img  class="w-96  " src="${categoryId.image_url}" alt=>
+<h3 class=" w-11/12 font-bold text-lg">Title: ${categoryId.title}</h3>
+<img  class="w-11/12  " src="${categoryId.image_url}" alt=>
 <img  class="w-12 mt-5 rounded-full " src="${categoryId.author.img}" alt=>
 <span class="pt-40">${categoryId.author.name ?categoryId.author.name :'name of author not found'}</span>
 <div class="inline  m-5"><i class="fa-regular fa-eye"></i><span class="ml-4">${categoryId.total_view ?categoryId.total_view :'viewer not found'}</span></div>

@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Crawler</title>
+    <title>News Media</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.24.0/dist/full.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://kit.fontawesome.com/99e2c02e52.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <main>
-      <section><div class="navbar px-20">
+      <section><div class="navbar ml-06 mr-10">
         <div class="flex-1">
-          <a class="btn btn-ghost normal-case text-xl">Media</a>
-          <span>Crawler</span>
+          <a class="btn btn-ghost normal-case text-xl">News</a>
+          <span>Media</span>
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal p-0">
@@ -42,21 +42,34 @@
         </div>
       </div>
       <hr></section>
-      <section>
+      
+      <section >
         
           
-            <ul  id="category-container" class=" flex flex-col lg:flex-row text-start p-0">
+            <ul  id="category-container" class=" flex flex-col lg:flex-row text-start px-20 py-8">
               
             </ul>
         
         
       </section>
-      <section id="loader" class="hidden">
-        <div class="flex justify-center items-center"><progress style="margin-top:200px;" class="progress w-56 pt-90"></progress></div>
+      <section id="loader" class="hidden ">
+        <div class="flex justify-center items-center"><progress style="margin-top:80px;" class="progress w-56 pt-90"></progress></div>
       </section>
       <section>
-        <div  class="my-10 shadow-lg" id="length-container"></div>
+        <div  class="my-1 shadow-lg" id="length-container"></div>
 
+      </section>
+      <section>
+        <div class=" lg:flex justify-around">
+          <div class="ml-20">
+          <span class="m-2">Sort by view:</span>
+          <button class="btn-disabled px-10 py-2 m-2 mt-10">Default</button>
+        </div>
+        <div class="ml-20">
+          <button class=" btn btn-primary m-2 mt-10">Today's pick</button>
+          <button class=" btn btn-outline m-2 btn-primary mt-10">Trending</button>
+        </div></div>
+       
       </section>
       <section id="news-container" >
         
