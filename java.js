@@ -8,15 +8,27 @@ const displayMedias = medias=>{
      const categoryContainer = document.getElementById('category-container');
      medias.forEach(media =>{
         // console.log(media.category_name)
+        
         const categoryList = document.createElement('li');
         categoryList.innerHTML= `<button onclick="categoryIdList('${media.category_id}')" class="p-8">${media.category_name}</button>`;
+        
     categoryContainer.appendChild(categoryList)
+    
      }
         )
+       
+}
+const toggleSpinner = isLoading =>{
+  const loaderSection = document.getElementById('loader')
+  if(isLoading){
+loaderSection.classList.remove('hidden')
+  }
+  else{loaderSection.classList.add('hidden')}
 }
 const categoryIdList =(categoryId)=>{
     url= `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     // console.log(url)
+    toggleSpinner(true);
     fetch(url)
     .then(res=>res.json())
     .then(data=>displayCategoryIdList(data.data))
@@ -56,6 +68,7 @@ console.log(category)
 </div>`
 newsContainer.appendChild(newsContainerDiv);
 })
+toggleSpinner(false);
 }
 const newsDetails =(detailsId)=>{
   url= ` https://openapi.programming-hero.com/api/news/${detailsId}`
