@@ -73,7 +73,10 @@ detailModalTitle.innerHTML=`
 <img  class="w-96  " src="${categoryId.image_url}" alt=>
 <img  class="w-12 mt-5 rounded-full " src="${categoryId.author.img}" alt=>
 <span class="pt-40">${categoryId.author.name ?categoryId.author.name :'name of author not found'}</span>
-<div class="inline  m-5"><i class="fa-regular fa-eye"></i><span class="ml-4">${categoryId.total_view ?categoryId.total_view :'viewer not found'}</span></div>`
+<div class="inline  m-5"><i class="fa-regular fa-eye"></i><span class="ml-4">${categoryId.total_view ?categoryId.total_view :'viewer not found'}</span></div>
+<div class="modal-action">
+  <label for="my-modal-6" class="btn">Yay!</label>
+  </div>`
 
 }
 // categoryIdList(07);
