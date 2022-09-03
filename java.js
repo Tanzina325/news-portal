@@ -2,6 +2,7 @@ const loadMedias =()=>{
     fetch('https://openapi.programming-hero.com/api/news/categories')
     .then(res=>res.json())
     .then(data=>displayMedias(data.data.news_category))
+    .catch(error=>console.log(error))
 }
 const displayMedias = medias=>{
     // console.log(medias);
@@ -32,6 +33,7 @@ const categoryIdList =(categoryId)=>{
     fetch(url)
     .then(res=>res.json())
     .then(data=>displayCategoryIdList(data.data))
+    .catch(error=>console.log(error))
     
 }
 const displayCategoryIdList =categoryNews =>{
