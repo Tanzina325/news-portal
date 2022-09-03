@@ -7,18 +7,18 @@ const loadMedias =()=>{
 const displayMedias = medias=>{
     // console.log(medias);
      const categoryContainer = document.getElementById('category-container');
+    
      medias.forEach(media =>{
         // console.log(media.category_name)
         
         const categoryList = document.createElement('li');
         categoryList.innerHTML= `<button onclick="categoryIdList('${media.category_id}')" class="p-8">${media.category_name}</button>`;
         
-    categoryContainer.appendChild(categoryList)
-    
-     }
-        )
-       
-}
+     categoryContainer.appendChild(categoryList); }
+       )
+        }
+
+
 const toggleSpinner = isLoading =>{
   const loaderSection = document.getElementById('loader')
   if(isLoading){
@@ -57,7 +57,7 @@ console.log(category)
   <figure><img src="${category.thumbnail_url}" alt="Movie"></figure>
   <div class="card-body lg:w-3/5">
     <h2 class="card-title">${category.title}</h2>
-    <p>${category.details.slice(0,250)+' ...'}</p>
+    <p>${category.details.slice(0,350)+' ...'}</p>
     <div class ="inline">
     <img  class="w-16 rounded-full " src="${category.author.img}" alt=>
     <span class="pt-40">${category.author.name ?category.author.name :'name of author not found'}</span>
